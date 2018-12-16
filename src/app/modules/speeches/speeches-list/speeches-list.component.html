@@ -1,0 +1,6 @@
+<h5>Speeches</h5>
+<div class="list-group mb-3">
+  <a href="#" (click)="edit($event)" *ngFor="let speech of speeches" class="list-group-item list-group-item-action">
+    {{ speech.title }}
+  </a>
+</div>

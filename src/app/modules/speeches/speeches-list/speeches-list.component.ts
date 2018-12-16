@@ -19,4 +19,7 @@ export class SpeechesListComponent implements OnInit {
     });
   }
 
+  edit($e) {
+    console.log($e);
+  }
 }

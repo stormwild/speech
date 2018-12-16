@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SpeechesListComponent } from './modules/view-speeches/speeches-list/speeches-list.component';
-import { AppComponent } from './app.component';
-import { ViewSpeechesComponent } from './modules/view-speeches/view-speeches/view-speeches.component';
+import { ViewSpeechesComponent } from './modules/speeches/view-speeches/view-speeches.component';
+import { SubmitSpeechComponent } from './modules/speeches/submit-speech/submit-speech.component';
+import { SearchSpeechesComponent } from './modules/speeches/search-speeches/search-speeches.component';
+import { HomeComponent } from './modules/main/home/home.component';
 
 const routes: Routes = [
-  { path: 'speeches', component: ViewSpeechesComponent }
+  { path: 'view', component: ViewSpeechesComponent },
+  { path: 'submit', component: SubmitSpeechComponent },
+  { path: 'search', component: SearchSpeechesComponent },
+  { path: '', component: HomeComponent },
 ];
 
 @NgModule({

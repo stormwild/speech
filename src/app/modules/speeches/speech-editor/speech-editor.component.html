@@ -1,0 +1,38 @@
+<h5>Edit</h5>
+<form action="">
+  <div class="form-group">
+    <textarea class="form-control" name="" id="" cols="30" rows="10" placeholder="Speech content"></textarea>
+  </div>
+  <div class="form-row align-items-center mb-3">
+    <div class="col-md-4 mb-3">
+      <label class="sr-only" for="author">Author</label>
+      <input type="text" class="form-control" id="author" placeholder="Jane Doe">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="" class="sr-only">Keywords</label>
+      <input type="text" class="form-control">
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="" class="sr-only"></label>
+      <div class="input-group">
+        <input class="form-control" placeholder="mm-dd-yyyy"
+               name="dp" ngbDatepicker #d="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-3 mb-3"></div>
+    <div class="col-md-3 mb-3">
+      <button class="btn btn-block btn-outline-secondary">Delete</button>
+    </div>
+    <div class="col-md-3 mb-3">
+        <button class="btn btn-block btn-outline-secondary">Save</button>
+    </div>
+    <div class="col-md-3 mb-3">
+        <button class="btn btn-block btn-outline-secondary">Share</button>
+    </div>
+  </div>
+</form>

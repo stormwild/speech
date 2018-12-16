@@ -4,9 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavModule } from './modules/nav/nav.module';
-import { ViewSpeechesModule } from './modules/view-speeches/view-speeches.module';
 import { SpeechService } from './services/speech.service';
-import { ViewSpeechesComponent } from './modules/view-speeches/view-speeches/view-speeches.component';
+import { SpeechesModule } from './modules/speeches/speeches.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MainModule } from './modules/main/main.module';
+import { CustomDateFormatterService } from './providers/custom-date-formatter.service';
 
 @NgModule({
   declarations: [
@@ -17,10 +19,13 @@ import { ViewSpeechesComponent } from './modules/view-speeches/view-speeches/vie
     HttpClientModule,
     AppRoutingModule,
     NavModule,
-    ViewSpeechesModule
+    MainModule,
+    SpeechesModule,
+    NgbModule
   ],
   providers: [
-    SpeechService
+    SpeechService,
+    CustomDateFormatterService
   ],
   bootstrap: [AppComponent]
 })

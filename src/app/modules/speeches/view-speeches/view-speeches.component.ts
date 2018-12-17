@@ -35,7 +35,7 @@ export class ViewSpeechesComponent implements OnInit {
   onDelete(speech: Speech) {
     this.speechService.deleteSpeech(speech).subscribe(s => {
       this.speeches = s;
-      this.speech = speech;
+      this.speech = this.speeches[0];
     });
   }
 }

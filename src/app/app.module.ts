@@ -11,6 +11,8 @@ import { MainModule } from './modules/main/main.module';
 import { CustomDateFormatterService } from './providers/custom-date-formatter.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    ToastrModule.forRoot(),
     NavModule,
     MainModule,
     SpeechesModule,

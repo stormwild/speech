@@ -8,6 +8,7 @@ import { SearchSpeechesComponent } from './search-speeches/search-speeches.compo
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ShareModalComponent } from './share-modal/share-modal.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ViewSpeechesComponent,
     SpeechEditorComponent,
     SubmitSpeechComponent,
-    SearchSpeechesComponent
+    SearchSpeechesComponent,
+    ShareModalComponent
   ],
   imports: [CommonModule, NgbModule, ReactiveFormsModule, FontAwesomeModule],
   exports: [SpeechesListComponent, ViewSpeechesComponent]

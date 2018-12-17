@@ -4,7 +4,7 @@ import { CustomDateFormatterService } from 'src/app/providers/custom-date-format
 import { Speech } from 'src/app/models/speech';
 import { FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { faPlus, faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { getAllRouteGuards } from '@angular/router/src/utils/preactivation';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-speech-editor',
@@ -31,7 +31,7 @@ export class SpeechEditorComponent implements OnInit, OnChanges {
     updated: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private dateService: CustomDateFormatterService) { }
+  constructor(private fb: FormBuilder, private dateService: CustomDateFormatterService, private toastr: ToastrService) { }
 
   ngOnInit() {
   }
@@ -107,10 +107,21 @@ export class SpeechEditorComponent implements OnInit, OnChanges {
         updated: this.dateService.format(this.updated.value)
       };
       this.save.emit(speech);
+      this.toastr.success(`${this.speech.title} updated!`);
     }
   }
 
-  onDelete() {
-    this.delete.emit(this.speechForm.value);
+  onDelete($e) {
+    $e.preventDefault();
+    const title = this.speech.title;
+    this.delete.emit({
+      id: this.speech.id,
+      title: this.speech.title,
+      content: this.content.value,
+      author: this.author.value,
+      tags: this.tags.value,
+      updated: this.dateService.format(this.updated.value)
+    });
+    this.toastr.success(`${title} removed!`);
   }
 }

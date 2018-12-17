@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainModule } from './modules/main/main.module';
 import { CustomDateFormatterService } from './providers/custom-date-formatter.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
     NavModule,
     MainModule,
     SpeechesModule,

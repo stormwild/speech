@@ -20,7 +20,7 @@ Pity the world, or else this glutton be,
 To eat the world's due, by the grave and thee.`,
         author: 'William Shakespeare',
         updated: '20/05/1609',
-        tags: ['sonnet']
+        tags: ['sonnet', 'abc', 'abcd', 'great', 'classic', 'reinasaance']
     },
     {
         id: 2,

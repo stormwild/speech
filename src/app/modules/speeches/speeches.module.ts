@@ -7,6 +7,7 @@ import { SubmitSpeechComponent } from './submit-speech/submit-speech.component';
 import { SearchSpeechesComponent } from './search-speeches/search-speeches.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SubmitSpeechComponent,
     SearchSpeechesComponent
   ],
-  imports: [CommonModule, NgbModule, ReactiveFormsModule],
+  imports: [CommonModule, NgbModule, ReactiveFormsModule, FontAwesomeModule],
   exports: [SpeechesListComponent, ViewSpeechesComponent]
 })
 export class SpeechesModule {}

@@ -3,17 +3,29 @@
   <div class="form-group">
     <textarea class="form-control" name="" id="" cols="30" rows="10" placeholder="Speech content" formControlName="content"></textarea>
   </div>
-  <div class="form-row align-items-center mb-3">
+  <div class="form-row align-items-start mb-3">
     <div class="col-md-4 mb-3">
-      <label class="sr-only" for="author">Author</label>
+      <label class="" for="author">Author</label>
       <input type="text" class="form-control" id="author" placeholder="Jane Doe" formControlName="author">
     </div>
     <div class="col-md-4 mb-3">
-      <label for="" class="sr-only">Keywords</label>
-      <input type="text" class="form-control">
+        <label for="" class="">Keywords</label>
+        <div *ngIf="tags" class="form-control well mb-3">
+            <a 
+            href="#"
+            *ngFor="let tag of tags; trackBy: trackByIndex; let i = index" 
+            (click)="remove(i)" 
+            class="badge badge-pill badge-light">{{ tag }}</a>
+        </div>  
+        <div class="input-group">
+            <input type="text" class="form-control" name="tag" #tag (keyup.enter)="addTag(tag.value)">
+            <div class="input-group-append">
+              <button class="btn btn-secondary" (click)="addTag(tag.value)" type="button"><fa-icon [icon]="faPlus"></fa-icon></button>
+            </div>
+        </div>  
     </div>
     <div class="col-md-4 mb-3">
-      <label for="" class="sr-only"></label>
+      <label for="" class="">Updated Date</label>
       <div class="input-group">
         <input type="text"
                class="form-control" 
@@ -22,7 +34,7 @@
                #d="ngbDatepicker" 
                formControlName="updated">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+          <button class="btn btn-secondary" (click)="d.toggle()" type="button"><fa-icon [icon]="faCalendar"></fa-icon></button>
         </div>
       </div>
     </div>

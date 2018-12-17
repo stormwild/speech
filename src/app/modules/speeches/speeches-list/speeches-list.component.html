@@ -1,6 +1,10 @@
 <h5>Speeches</h5>
-<div class="list-group mb-3">
-  <a href="#" (click)="edit($event)" *ngFor="let speech of speeches" class="list-group-item list-group-item-action">
-    {{ speech.title }}
-  </a>
+<div *ngIf="speeches" class="list-group mb-3">
+    <a href="#" 
+       *ngFor="let speech of speeches; trackBy: trackBySpeech;" 
+       (click)="edit(speech)" 
+       class="list-group-item list-group-item-action" 
+       [class.active]="current.id == speech.id">
+       {{ speech.title }}
+    </a>
 </div>

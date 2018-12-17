@@ -1,12 +1,12 @@
 <h5>Edit</h5>
-<form action="">
+<form [formGroup]="speechForm">
   <div class="form-group">
-    <textarea class="form-control" name="" id="" cols="30" rows="10" placeholder="Speech content"></textarea>
+    <textarea class="form-control" name="" id="" cols="30" rows="10" placeholder="Speech content" formControlName="content"></textarea>
   </div>
   <div class="form-row align-items-center mb-3">
     <div class="col-md-4 mb-3">
       <label class="sr-only" for="author">Author</label>
-      <input type="text" class="form-control" id="author" placeholder="Jane Doe">
+      <input type="text" class="form-control" id="author" placeholder="Jane Doe" formControlName="author">
     </div>
     <div class="col-md-4 mb-3">
       <label for="" class="sr-only">Keywords</label>
@@ -15,8 +15,12 @@
     <div class="col-md-4 mb-3">
       <label for="" class="sr-only"></label>
       <div class="input-group">
-        <input class="form-control" placeholder="mm-dd-yyyy"
-               name="dp" ngbDatepicker #d="ngbDatepicker">
+        <input type="text"
+               class="form-control" 
+               placeholder="mm-dd-yyyy"
+               ngbDatepicker 
+               #d="ngbDatepicker" 
+               formControlName="updated">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
         </div>

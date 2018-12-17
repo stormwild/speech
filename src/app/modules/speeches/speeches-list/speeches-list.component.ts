@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { SpeechService } from 'src/app/services/speech.service';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Speech } from 'src/app/models/speech';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-speeches-list',
@@ -9,17 +9,23 @@ import { Speech } from 'src/app/models/speech';
 })
 export class SpeechesListComponent implements OnInit {
 
-  public speeches: Speech[] = [];
+  @Input() public speeches: Speech[];
+  @Output() public change = new EventEmitter();
+  public current: Speech;
 
-  constructor(private speechService: SpeechService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.speechService.getSpeeches().subscribe(s => {
-      this.speeches.push(s);
-    });
+    this.current = this.speeches[0];
   }
 
-  edit($e) {
-    console.log($e);
+  edit(speech: Speech) {
+    this.change.emit(speech);
+    this.current = speech;
+    return false;
+  }
+
+  trackBySpeech(index: number, speech: Speech) {
+    return speech.id;
   }
 }

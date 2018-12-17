@@ -9,6 +9,7 @@ import { SpeechesModule } from './modules/speeches/speeches.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MainModule } from './modules/main/main.module';
 import { CustomDateFormatterService } from './providers/custom-date-formatter.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CustomDateFormatterService } from './providers/custom-date-formatter.se
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     NavModule,
     MainModule,
     SpeechesModule,

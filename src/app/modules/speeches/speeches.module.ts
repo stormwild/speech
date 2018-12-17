@@ -6,6 +6,7 @@ import { SpeechEditorComponent } from './speech-editor/speech-editor.component';
 import { SubmitSpeechComponent } from './submit-speech/submit-speech.component';
 import { SearchSpeechesComponent } from './search-speeches/search-speeches.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SubmitSpeechComponent,
     SearchSpeechesComponent
   ],
-  imports: [CommonModule, NgbModule ],
+  imports: [CommonModule, NgbModule, ReactiveFormsModule],
   exports: [SpeechesListComponent, ViewSpeechesComponent]
 })
 export class SpeechesModule {}

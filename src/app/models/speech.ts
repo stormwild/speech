@@ -4,5 +4,5 @@ export class Speech {
     content: string;
     author: string;
     tags: string[];
-    updated: Date;
+    updated: string;
 }

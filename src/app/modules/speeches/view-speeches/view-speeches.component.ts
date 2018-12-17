@@ -16,12 +16,26 @@ export class ViewSpeechesComponent implements OnInit {
 
   ngOnInit() {
     this.speechService.getSpeeches().subscribe(s => {
-      this.speeches.push(s);
+      this.speeches = s;
       this.speech = this.speeches[0];
     });
   }
 
   onChange(speech: Speech) {
-    this.speech = speech;
+    this.speech = this.speeches[this.speeches.findIndex(s => s.id === speech.id)];
+  }
+
+  onSave(speech: Speech) {
+    this.speechService.saveSpeech(speech).subscribe(s => {
+      this.speeches = s;
+      this.speech = speech;
+    });
+  }
+
+  onDelete(speech: Speech) {
+    this.speechService.deleteSpeech(speech).subscribe(s => {
+      this.speeches = s;
+      this.speech = speech;
+    });
   }
 }

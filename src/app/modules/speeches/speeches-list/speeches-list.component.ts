@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, OnChanges } from '@angular/core';
 import { Speech } from 'src/app/models/speech';
 import { EventEmitter } from '@angular/core';
 
@@ -9,9 +9,10 @@ import { EventEmitter } from '@angular/core';
 })
 export class SpeechesListComponent implements OnInit {
 
-  @Input() public speeches: Speech[];
-  @Output() public change = new EventEmitter();
-  public current: Speech;
+  @Input() speeches: Speech[];
+  @Output() change = new EventEmitter();
+
+  current: Speech;
 
   constructor() { }
 
@@ -19,9 +20,9 @@ export class SpeechesListComponent implements OnInit {
     this.current = this.speeches[0];
   }
 
-  edit(speech: Speech) {
-    this.change.emit(speech);
+  select(speech: Speech) {
     this.current = speech;
+    this.change.emit(this.current);
     return false;
   }
 

@@ -1,6 +1,6 @@
 import { Speech } from '../models/speech';
 
-export const SPEECHES: Speech[] = [
+export let SPEECHES: Speech[] = [
     {
         id: 1,
         title: 'Sonnet 1',
@@ -19,7 +19,7 @@ And, tender churl, makest waste in niggarding.
 Pity the world, or else this glutton be,
 To eat the world's due, by the grave and thee.`,
         author: 'William Shakespeare',
-        updated: '20/05/1609',
+        updated: '05/20/1609',
         tags: ['sonnet', 'abc', 'abcd', 'great', 'classic', 'reinasaance']
     },
     {
@@ -40,7 +40,7 @@ Proving his beauty by succession thine!
 This were to be new made when thou art old,
 And see thy blood warm when thou feel'st it cold.`,
         author: 'William Shakespeare',
-        updated: '20/05/1609',
+        updated: '05/20/1609',
         tags: ['sonnet']
     },
     {
@@ -61,7 +61,7 @@ Despite of wrinkles this thy golden time.
 But if thou live, remember'd not to be,
 Die single, and thine image dies with thee.`,
         author: 'William Shakespeare',
-        updated: '20/05/1609',
+        updated: '05/20/1609',
         tags: ['modern']
     }
 ];

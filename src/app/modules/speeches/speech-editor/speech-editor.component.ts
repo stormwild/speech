@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, OnChanges, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { CustomDateFormatterService } from 'src/app/providers/custom-date-formatter.service';
 import { Speech } from 'src/app/models/speech';
 import { FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { faPlus, faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { getAllRouteGuards } from '@angular/router/src/utils/preactivation';
 
 @Component({
   selector: 'app-speech-editor',
@@ -15,6 +16,9 @@ import { faPlus, faCalendar } from '@fortawesome/free-solid-svg-icons';
 })
 export class SpeechEditorComponent implements OnInit, OnChanges {
   @Input() public speech: Speech;
+  @Output() public save = new EventEmitter();
+  @Output() public delete = new EventEmitter();
+
   @ViewChild('tag') tag: ElementRef;
 
   faPlus = faPlus;
@@ -23,9 +27,7 @@ export class SpeechEditorComponent implements OnInit, OnChanges {
   speechForm = this.fb.group({
     content: ['', Validators.required],
     author: ['', Validators.required],
-    tags: this.fb.array([
-      this.fb.control('')
-    ]),
+    tags: this.fb.array([]),
     updated: ['', Validators.required]
   });
 
@@ -40,22 +42,46 @@ export class SpeechEditorComponent implements OnInit, OnChanges {
         content: this.speech.content,
         author: this.speech.author,
         updated: this.dateService.parse(this.speech.updated),
-        tags: this.speech.tags
+        tags: this.initTags(this.speech.tags)
       });
-      console.log(this.speech);
     }
   }
 
-  get tags() {
-    return this.speech.tags || [];
+  get content() {
+    return this.speechForm.get('content');
   }
 
-  get tagList() {
+  get author() {
+    return this.speechForm.get('author');
+  }
+
+  get updated() {
+    return this.speechForm.get('updated');
+  }
+
+  get tags() {
     return this.speechForm.get('tags') as FormArray;
   }
 
+  initTags(tags: string[]): string[] {
+    this.speechForm.setControl('tags', this.fb.array([]));
+    for (let index = 0; index < tags.length; index++) {
+      this.tags.push(this.fb.control(tags[index]));
+    }
+    return tags;
+  }
+
   addTag(tag: string) {
-    this.speech.tags.push(tag);
+    let containsTag = false;
+    for (let index = 0; index < this.tags.length; index++) {
+      if (this.tags.at(index).value === tag) {
+        containsTag = true;
+      }
+    }
+
+    if (containsTag === false) {
+      this.tags.push(this.fb.control(tag));
+    }
     this.tag.nativeElement.value = '';
     return false;
   }
@@ -65,7 +91,26 @@ export class SpeechEditorComponent implements OnInit, OnChanges {
   }
 
   remove(i: number) {
-    this.speech.tags.splice(i, 1);
+    this.tags.removeAt(i);
     return false;
+  }
+
+  onSubmit($e) {
+    $e.preventDefault();
+    if (this.speechForm.valid) {
+      const speech: Speech = {
+        id: this.speech.id,
+        title: this.speech.title,
+        content: this.content.value,
+        author: this.author.value,
+        tags: this.tags.value,
+        updated: this.dateService.format(this.updated.value)
+      };
+      this.save.emit(speech);
+    }
+  }
+
+  onDelete() {
+    this.delete.emit(this.speechForm.value);
   }
 }

@@ -6,7 +6,10 @@
       (change)="onChange($event)"></app-speeches-list>
     </div>
     <div class="col-md-8">
-      <app-speech-editor [speech]="speech"></app-speech-editor>
+      <app-speech-editor 
+      [speech]="speech" 
+      (save)="onSave($event)"
+      (delete)="onDelete($event)"></app-speech-editor>
     </div>
   </div>
 </div>

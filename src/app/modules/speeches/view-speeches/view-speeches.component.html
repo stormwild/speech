@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-sm-3">
+      <app-speeches-list 
+      [speeches]="speeches"
+      (change)="onChange($event)"></app-speeches-list>
+    </div>
+    <div class="col-md-8">
+      <app-speech-editor 
+      [speech]="speech" 
+      (save)="onSave($event)"
+      (delete)="onDelete($event)"></app-speech-editor>
+    </div>
+  </div>
+</div>
+

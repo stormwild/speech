@@ -1,0 +1,31 @@
+<ng-template #content let-modal>
+    <form [formGroup]="shareForm" (ngSubmit)="send($event)">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Share Speech</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group">
+                <label class="" for="email">Email</label>
+                <input type="text" class="form-control" id="email" placeholder="Email" formControlName="email">
+                <div *ngIf="(submitted  && email.invalid) || (email.invalid && (email.touched || email.dirty))" class="alert alert-danger mt-3">
+                    <div *ngIf="email.errors.required">
+                        Email is required.
+                    </div>
+                    <div *ngIf="email.errors.email">
+                        Email is not valid.
+                    </div>
+                </div>                
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-outline-dark">Save</button>
+        </div>
+    </form>
+</ng-template>
+
+<button class="btn btn-block btn-outline-secondary" type="button" (click)="open(content)">Share</button>

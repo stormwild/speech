@@ -138,5 +138,8 @@
       }
     }
   },
-  "defaultProject": "speech"
+  "defaultProject": "speech",
+  "cli": {
+    "analytics": "9bb1b510-655b-466a-a7fb-a83800b9be43"
+  }
 }
